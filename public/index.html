@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/qs@6.10.2/dist/qs.js"></script>
+</head>
+<body>
+    hello
+
+    <script>
+        async function getUrlParam() {
+          const a  = await axios.get('/api/person/123');
+          console.log(a);
+        }
+        getUrlParam();
+
+        async function getQuery() {
+          const a  = await axios.get('/api/person/find', {
+           params: {
+            age: 12,
+            name: 'yyhh'
+           }
+          });
+          console.log(a);
+        }
+        getQuery();
+
+        async function formUrlEncoded() {
+          const a  = await axios.post('/api/person', Qs.stringify({
+              name: 'yyhh',
+              age: 16,
+            }),
+            {
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              }
+            }
+          );
+          console.log(a);
+        }
+        formUrlEncoded();
+    </script>
+</body>
+</html>
